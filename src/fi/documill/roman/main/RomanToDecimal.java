@@ -2,7 +2,7 @@
  * Copyright 2019 Alemnew Asrese
  * <p>
  * A Roman number to decimal integer converter. The program converts roman numerals within the range I - MMMMCMXCIX
- * i.e, 1 to 4999 in the decimal notation.
+ * (i.e, 1 to 4999 in the decimal notation).
  *
  * @author alemnew.asrese@aalto.fi Alemnew Asrese
  * @version 1.0
@@ -79,16 +79,21 @@ public class RomanToDecimal {
         RomanToDecimal romanToDecimal = new RomanToDecimal();
         Scanner scanner = new Scanner(System.in);
 
+        int decimal;
         while (true) {
 
             String roman = scanner.nextLine();
             if (roman.equals("quit")) {
                 break;
             }
-            System.out.println(romanToDecimal.convertToDecimal(roman));
 
+            decimal = romanToDecimal.convertToDecimal(roman);
+            if (decimal == 0) {
+                System.out.println("Invalid number. Please enter a valid roman number.");
+            } else {
+                System.out.println(decimal);
+            }
         }
-
 
     }
 }
