@@ -4,8 +4,8 @@ Roman number to deciman integer converter. The program converts roman numbers wi
 
 # Code structure 
 
-- [src/fi/documill/main/RomanToDecimal.java](src/fi/documill/main/RomanToDecimal.java) contains the main source code. 
-- [src/fi/documill/test/RomanToDecimalTest.java](src/fi/documill/test/RomanToDecimalTest.java)  contains the test cases for the program. 
+- [RomanToDecimal.java](src/fi/documill/main/RomanToDecimal.java) contains the main source code. 
+- [RomanToDecimalTest.java](src/fi/documill/test/RomanToDecimalTest.java)  contains the test cases for the program. 
 
 # How use it? 
 The program is developed and tested with the latest version of Java (Java SE 13).  If your system does not have Java installed, please install it from [Oracle](https://www.oracle.com/technetwork/java/javase/downloads/index.html) website. 
