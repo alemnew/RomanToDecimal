@@ -1,6 +1,6 @@
-/**
+/*
  * Copyright 2019 Alemnew Asrese
- *
+ * <p>
  * A Roman number to decimal integer converter. The program converts roman numerals within the range I - MMMMCMXCIX
  * i.e, 1 to 4999 in the decimal notation.
  *
@@ -9,18 +9,15 @@
  * Created on 2019/11/27
  */
 
-package fi.documill.roman;
-/**
- *
- */
+package fi.documill.roman.main;
 
-import java.util.Scanner;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 public class RomanToDecimal {
 
-    static final Map<Character, Integer> ROMAN_DECIMAL = new HashMap();
+    static final private Map<Character, Integer> ROMAN_DECIMAL = new HashMap<>();
 
     static {
         ROMAN_DECIMAL.put('I', 1);
@@ -35,13 +32,13 @@ public class RomanToDecimal {
     /**
      * Checks whether a given string contains a valid roman numeral within the range I - MMMMCMXCIX and
      * correctly formatted.
+     *
      * @param str the string that contains the roman numeral.
      * @return true if the string is a valid roman number, false otherwise.
      */
-    static boolean isValid(String str) {
-        boolean valid = str.matches("^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$");
+    static private boolean isValid(String str) {
+        return str.matches("^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$");
 
-        return valid;
     }
 
     /**
@@ -53,7 +50,7 @@ public class RomanToDecimal {
     public int convertToDecimal(String str) {
         int decimal = 0;
         String roman = str.toUpperCase(); // Change all the user input to capital letter.
-        int romanLength= roman.length();
+        int romanLength = roman.length();
 
         // Check if the string is valid roman numeral.
         if (!isValid(roman)) {
@@ -78,14 +75,16 @@ public class RomanToDecimal {
     }
 
     public static void main(String[] args) {
-        System.out.print("Enter the roman numeral: ");
+        System.out.print("Enter the roman numeral or type 'quit' to exit: ");
         RomanToDecimal romanToDecimal = new RomanToDecimal();
         Scanner scanner = new Scanner(System.in);
 
-        boolean a = true;
-        while (a) {
+        while (true) {
 
             String roman = scanner.nextLine();
+            if (roman.equals("quit")) {
+                break;
+            }
             System.out.println(romanToDecimal.convertToDecimal(roman));
 
         }
