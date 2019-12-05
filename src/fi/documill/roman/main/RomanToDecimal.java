@@ -44,12 +44,14 @@ public class RomanToDecimal {
     /**
      * Convert roman number to decimal integer.
      *
-     * @param str the roman number in string format.
+     * @param str the roman number in string format. The string is case insensitive.
      * @return the integer equivalent  of the roman string.
      */
-    public int convertToDecimal(String str) {
+    public static int convertToDecimal(String str) {
         int decimal = 0;
-        String roman = str.toUpperCase(); // Change all the user input to capital letter.
+
+        // Change all the user input to capital letter.
+        String roman = str.toUpperCase();
         int romanLength = roman.length();
 
         // Check if the string is valid roman numeral.
@@ -57,15 +59,15 @@ public class RomanToDecimal {
             return 0;
         }
         try {
+            int current = ROMAN_DECIMAL.get(roman.charAt(0));
             for (int i = 0; i < romanLength; i++) {
-                int current = ROMAN_DECIMAL.get(roman.charAt(i));
                 int next = (i + 1) < romanLength ? ROMAN_DECIMAL.get(roman.charAt(i + 1)) : 0;
-
                 if (current >= next) {
                     decimal += current;
                 } else {
                     decimal -= current;
                 }
+                current = next;
             }
             return decimal;
         } catch (NullPointerException e) {
@@ -76,7 +78,7 @@ public class RomanToDecimal {
 
     public static void main(String[] args) {
         System.out.print("Enter the roman numeral or type 'quit' to exit: ");
-        RomanToDecimal romanToDecimal = new RomanToDecimal();
+        //RomanToDecimal romanToDecimal = new RomanToDecimal();
         Scanner scanner = new Scanner(System.in);
 
         int decimal;
@@ -87,7 +89,7 @@ public class RomanToDecimal {
                 break;
             }
 
-            decimal = romanToDecimal.convertToDecimal(roman);
+            decimal = convertToDecimal(roman);
             if (decimal == 0) {
                 System.out.println("Invalid number. Please enter a valid roman number.");
             } else {
